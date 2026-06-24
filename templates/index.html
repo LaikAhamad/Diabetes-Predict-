@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <video class="bg-video" autoplay muted loop>
+      <source src="v.mp4" type="video/mp4" />
+    </video>
+
+    <div class="container">
+      <h2>Diabetes Prediction</h2>
+      <form method="POST" action="/">
+        <label for="Age">Age:</label>
+        <input type="number" name="Age" step="1" required />
+
+        <label for="BMI">BMI:</label>
+        <input type="number" name="BMI" step="0.1" required />
+
+        <label for="Glucose">Glucose Level:</label>
+        <input type="number" name="Glucose" step="1" required />
+
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+
+        <label for="smoker">Smoker:</label>
+        <select name="smoker" required>
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="FamilyHistory">Family History:</label>
+        <select name="FamilyHistory" required>
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if result %}
+      <div
+        class="result {% if 'Not' in result %}not-diabetic{% else %}diabetic{% endif %}"
+      >
+        Result: {{ result }}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
